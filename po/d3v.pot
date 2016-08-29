@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Tomtix 
+# This file is distributed under the same license as the d3v package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: d3v 0.1\n"
+"Report-Msgid-Bugs-To: tom dot tix at hotmail dot fr\n"
+"POT-Creation-Date: 2016-08-27 15:37+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/error.c:10
+#, c-format
+msgid "D3V-WARNING: "
+msgstr ""
+
+#: src/error.c:20
+#, c-format
+msgid "D3V-ERROR: "
+msgstr ""
+
+#: src/main.c:191
+msgid "penguins"
+msgstr ""
+
+#: src/main.c:194
+#, c-format
+msgid "Usage: %s penguin_count\n"
+msgstr ""
+
+#: src/main.c:203
+msgid "penguin"
+msgstr ""
+
+#: src/main.c:229
+#, c-format
+msgid "Main loop exited ...\n"
+msgstr ""
+
+#: src/model.c:97
+msgid "All faces must be triangles."
+msgstr ""
+
+#: src/model.c:252
+#, c-format
+msgid "scanned %d faces\n"
+msgstr ""
+
+#: src/model.c:286
+#, c-format
+msgid "parsing object \"%s\".\n"
+msgstr ""
+
+#: src/model.c:289
+#, c-format
+msgid "unexpected object type '%s'.\n"
+msgstr ""
+
+#: src/model.c:295
+#, c-format
+msgid "parsed %d faces\n"
+msgstr ""

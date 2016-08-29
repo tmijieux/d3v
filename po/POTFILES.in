@@ -1,0 +1,11 @@
+./src/mouse_projection.c 
+./src/error.c 
+./src/light.c 
+./src/object.c 
+./src/math_util.c 
+./src/main.c 
+./src/scene.c 
+./src/model.c 
+./src/camera.c 
+./src/texture.c 
+./src/util.c 
