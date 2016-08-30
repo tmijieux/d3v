@@ -15,7 +15,6 @@
 
 int window_key;
 static d3v_scene *gl_scene;
-int d3v_mouse_projection(vec3 *pos, int x, int y);
 
 static void
 d3v_set_scene(d3v_scene *scene)
@@ -74,7 +73,9 @@ mouse_cb(int button, int state, int x, int y)
 	case GLUT_UP:
 	    gl_scene->button = 0;
 	    vec3 pos;
-	    d3v_mouse_projection(&pos, x , y);
+	    d3v_mouse_projection(&pos, x , y,
+                                 gl_scene->camera.projection,
+                                 gl_scene->camera.view);
 	    printf("%f %f %f\n", pos.x, pos.y, pos.z);
 	    break;
 	} break;
