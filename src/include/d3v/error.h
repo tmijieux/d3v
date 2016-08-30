@@ -10,6 +10,7 @@
     ERROR(WAVEFRONT_PARSE_NORMAL)               \
     ERROR(WAVEFRONT_PARSE_FACE)                 \
     ERROR(WAVEFRONT_PARSE_VERTEX_INDEX)         \
+    ERROR(TEXTURE_LOAD)                         \
     ERROR(FILE_BAD_ENCODING)                    \
 
 

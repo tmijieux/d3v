@@ -31,7 +31,10 @@ void matrix_translation(float *out, vec3 t);
 void matrix_scale(float *out, vec3 scale);
 
 void matrix_vector_multiply(float *M, vec4 *V);
-void matrix_multiply(float *m1, float *m2, float *res);
+void matrix_multiply(float M1[restrict 16],
+                     float M2[restrict 16],
+                     float OUT[restrict 16]);
+
 void matrix_identity(float *M);
 
 void matrix_fov_projection(

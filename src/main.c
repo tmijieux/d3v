@@ -22,6 +22,7 @@ d3v_set_scene(d3v_scene *scene)
     gl_scene = scene;
 }
 
+/*
 static void draw_basis(void)
 {
     glNormal3f(0., 1., 0.);
@@ -41,13 +42,13 @@ static void draw_basis(void)
     glEnd();
     glColor3f(1., 1., 1.);	// reset color
 }
+*/
 
 static void draw_cb(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     d3v_camera_update(&gl_scene->camera, gl_scene->object[0]->program);
-    draw_basis();
     for (int i = 0; i < gl_scene->object_count; i++)
 	d3v_object_draw(gl_scene->object[i]);
     glutSwapBuffers();
@@ -120,10 +121,10 @@ d3v_glut_init(const char *title, int *argc, char **argv[])
     glutInitWindowPosition(WINDOW_X, WINDOW_Y);
     glutInitWindowSize(WIDTH, HEIGHT);
     glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
-    
+
     glutInitContextVersion(3, 3);
     glutInitContextFlags(GLUT_CORE_PROFILE | GLUT_DEBUG);
-    
+
     window_key = glutCreateWindow(title);
 
     glutDisplayFunc(&draw_cb);
@@ -137,7 +138,7 @@ d3v_opengl_init(void)
 {
     glClearColor(.5, .5, .5, 1.0);
     glColor3f(1.0, 1.0, 1.0);
-    
+
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
     //glEnable(GL_TEXTURE_2D);
@@ -183,7 +184,7 @@ int main(int argc, char *argv[])
     d3v_scene_init(&main_scene);
     penguin_model = d3v_model_new_from_wavefront(
         OBJDIR "penguin.obj", _("penguin"), &prog);
-    penguin_texture = d3v_texture_load(TEXDIR "penguin_black.jpg");
+    penguin_texture = d3v_texture_new(TEXDIR "penguin_black.jpg");
 
     d3v_scene_add_model(&main_scene, penguin_model);
     d3v_scene_add_texture(&main_scene, penguin_texture);
@@ -208,10 +209,11 @@ int main(int argc, char *argv[])
         d3v_object_set_program(penguin, &prog);
     }
 
-    d3v_set_scene(&main_scene);
-    glutMainLoop();
-
-    printf(_("Main loop exited ...\n"));
+    if (n) {
+        d3v_set_scene(&main_scene);
+        glutMainLoop();
+        printf(_("Main loop exited ...\n"));
+    }
 
     d3v_scene_free(&main_scene);
     d3v_model_delete(penguin_model);
