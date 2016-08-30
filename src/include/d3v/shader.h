@@ -8,9 +8,13 @@ typedef struct d3v_shader_ {
 typedef struct d3v_program_ {
     GLuint id;
 
+    // uniforms
     GLuint model_location;
     GLuint view_location;
-    GLuint projection_location;
+    GLuint proj_location;
+    GLuint sampler_location;
+
+    // attributes
     GLuint position_location;
     GLuint texcoord_location;
 } d3v_program;

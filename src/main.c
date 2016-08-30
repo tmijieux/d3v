@@ -184,7 +184,7 @@ int main(int argc, char *argv[])
     d3v_scene_init(&main_scene);
     penguin_model = d3v_model_new_from_wavefront(
         OBJDIR "penguin.obj", _("penguin"), &prog);
-    penguin_texture = d3v_texture_new(TEXDIR "penguin_black.jpg");
+    penguin_texture = d3v_texture_new(TEXDIR "penguin_black.jpg", &prog);
 
     d3v_scene_add_model(&main_scene, penguin_model);
     d3v_scene_add_texture(&main_scene, penguin_texture);

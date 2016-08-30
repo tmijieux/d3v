@@ -80,7 +80,9 @@ int d3v_program_init(d3v_program *program, ...)
     if (program->id) {
         program->model_location = glGetUniformLocation(program->id, "model");
         program->view_location = glGetUniformLocation(program->id, "view");
-        program->projection_location = glGetUniformLocation(program->id, "projection");
+        program->proj_location = glGetUniformLocation(program->id, "projection");
+        program->sampler_location = glGetUniformLocation(program->id, "tex");
+
         program->position_location = glGetAttribLocation(program->id, "position");
         program->texcoord_location = glGetAttribLocation(program->id, "TexCoord");
         glUseProgram(program->id);

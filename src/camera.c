@@ -80,7 +80,7 @@ void d3v_camera_rotate(d3v_camera *camera, float ax, float ay)
     matrix_rotation(R, ax, camera->xaxis);
     matrix_vector_multiply(R, &camera->reye);
     matrix_vector_multiply(R, &camera->yaxis);
-    
+
     vec4 up = { 0., 1., 0., 0. };
     matrix_rotation(R, ay, up);
     matrix_vector_multiply(R, &camera->reye);
@@ -93,7 +93,7 @@ void d3v_camera_update(d3v_camera *camera, d3v_program *program)
 {
     if (camera->updated) {
         int v = program->view_location;
-        int p = program->projection_location;
+        int p = program->proj_location;
         glUniformMatrix4fv(v, 1, GL_FALSE, &(camera->view[0]));
         glUniformMatrix4fv(p, 1, GL_FALSE, &(camera->projection[0]));
         camera->updated = false;

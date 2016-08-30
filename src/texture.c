@@ -51,26 +51,30 @@ texture_load_jpeg(const char *file_path, int *width, int *height)
     return texture;
 }
 
-int d3v_texture_init(d3v_texture *texture, char const *path)
+int d3v_texture_init(d3v_texture *texture, char const *path, d3v_program *program)
 {
     int width, height;
     texture->tex_data = texture_load_jpeg(path, &width, &height);
     if (texture->tex_data == NULL)
         return -D3V_ERR_TEXTURE_LOAD;
 
+    const int texUnit = 0;
     glGenTextures(1, &texture->tex_id);
+    glActiveTexture(GL_TEXTURE0 + texUnit);
     glBindTexture(GL_TEXTURE_2D, texture->tex_id);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height,
 		 0, GL_RGB, GL_UNSIGNED_BYTE, texture->tex_data);
+    glUniform1i(program->sampler_location, GL_TEXTURE0 + texUnit);
+    return 0;
 }
 
 d3v_texture *
-d3v_texture_new(const char *path)
+d3v_texture_new(const char *path, d3v_program *prog)
 {
     d3v_texture *t = g_malloc0(sizeof*t);
-    if (d3v_texture_init(t, path) < 0) {
+    if (d3v_texture_init(t, path, prog) < 0) {
         g_free(t);
         t = NULL;
     }
